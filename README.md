@@ -47,7 +47,7 @@ Enforce cloud security and best practices at the build and deployment time.
 ```
 
 
-### Enable GIthub Code Scanning
+### Enable Github Code Scanning
 ```yaml
 - uses: weaveworks/weave-action@v1
   with:
