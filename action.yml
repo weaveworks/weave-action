@@ -69,7 +69,7 @@ branding:
 
 runs:
   using: docker
-  image: docker://magalixcorp/weave-validator:v1
+  image: docker://magalixcorp/weave-validator:v1.0.0
   args:
     - weave-validator
     - --path 
