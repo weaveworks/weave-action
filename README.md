@@ -20,10 +20,27 @@ Enforce cloud security and best practices at the build and deployment time.
 
 
 ```yaml
-- uses: weaveworks/weave-action@v1
-  with:
-    path: <path to resources kustomization directory>
-    policies-path: <path to policies kustomization directory>
+name: Weaveworks
+on:
+  push:
+    branches: [ master ]
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: weaveworks/weave-action@v1
+        with:
+          path: entities-to-scan
+          policies-path: policies
+          remediate: true # enable auto remediation
+          sarif-file: results.sarif ## export result in SARF format to send it to github code scanning
+
+      # send results to github code scanning
+      - uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: results.sari
 ```
 
 ## Examples
