@@ -9,14 +9,14 @@ Enforce cloud security and best practices at the build and deployment time.
 
 ## Usage
 
-| Parameter                     | Description                                     | Required  |
-| ----------------------------- | ----------------------------------------------- | --------- |
-| `path`                        | Path to resources kustomization                 |    Yes    |
-| `helm-values-file`            | Path to resources helm values file              |    No     |
-| `policies-path`               | Path to policies kustomization                  |    Yes    |
-| `policies-helm-values-file`   | Path to policies helm values file               |    No     |
-| `remediate`                   | Automatically remediate resources if possible   |    No     |
-| `sarif-file`                  | Export result in sarif format                   |    No     |
+| Parameter                     | Description                                                           | Required  | Default |
+| ----------------------------- | --------------------------------------------------------------------- | --------- | ------- |
+| `path`                        | Path to Kustomization, Helm Chart or plain Kubernetes files           |    Yes    |    -    |
+| `helm-values-file`            | Path to resources helm values file                                    |    No     |    -    |
+| `policies-path`               | Path to policies Kustomization, Helm Chart or plain Kubernetes files  |    Yes    |    -    |
+| `policies-helm-values-file`   | Path to policies helm values file                                     |    No     |    -    |
+| `remediate`                   | Automatically remediate resources if possible                         |    No     |  false  |
+| `sarif-file`                  | Export result in sarif format                                         |    No     |    -    |
 
 
 ```yaml
@@ -51,6 +51,7 @@ jobs:
 - uses: weaveworks/weave-action@v1
   with:
     path: helm/
+    helm-values-file: helm/dev-values.yaml
     policies-path: <repository>/<path to policies kustomization directory>
 ```
 
@@ -59,6 +60,7 @@ jobs:
 - uses: weaveworks/weave-action@v1
   with:
     path: helm/
+    helm-values-file: helm/dev-values.yaml
     policies-path: policies
     remediate: true # enable auto remediation
 ```
@@ -69,6 +71,7 @@ jobs:
 - uses: weaveworks/weave-action@v1
   with:
     path: helm/
+    helm-values-file: helm/dev-values.yaml
     policies-path: policies
     sarif-file: results.sarif # export result into SARIF format
 

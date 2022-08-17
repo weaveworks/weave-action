@@ -3,7 +3,7 @@ author: weave.works
 description: Enforce cloud security and best practices at the build and deployment time.
 inputs:
   path:
-    description: path to resources kustomization
+    description: path to Kustomization, Helm Chart or plain Kubernetes files
     required: true
     
   helm-values-file:
@@ -11,7 +11,7 @@ inputs:
     required: false
   
   policies-path:
-    description: path to policies kustomization
+    description: path to policies Kustomization, Helm Chart or plain Kubernetes files
     required: true
 
   policies-helm-values-file:
