@@ -69,7 +69,7 @@ branding:
 
 runs:
   using: docker
-  image: docker://weaveworks/weave-iac-validator:v1
+  image: docker://weaveworks/weave-iac-validator:dev
   args:
     - weave-validator
     - --path 
